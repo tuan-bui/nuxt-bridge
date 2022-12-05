@@ -1,5 +1,6 @@
 <template>
   <Page>
+    <h1 style="font-size: 5rem; font-weight: bold;">{{ title }}</h1>
     <Apple />
     <Cherry />
   </Page>
@@ -7,7 +8,6 @@
 
 <script>
 import Vue from 'vue';
-import LazyHydrate from 'vue-lazy-hydration';
 
 export default Vue.extend({
   components: {
@@ -17,6 +17,15 @@ export default Vue.extend({
             /* webpackChunkName: "Apple" */"../components/Apple.vue"),
     Cherry: () =>import(
             /* webpackChunkName: "Cherry" */"../components/Cherry.vue")
+  },
+  async asyncData() {
+    const content = await $fetch(
+      `/api/hello`,
+    )
+
+    return {
+      ...content
+    }
   }
 })
 </script>
