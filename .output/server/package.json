@@ -1,0 +1,26 @@
+{
+  "name": "nitro-output",
+  "version": "0.0.0",
+  "private": true,
+  "bundledDependencies": [
+    "source-map-support",
+    "hookable",
+    "pathe",
+    "radix3",
+    "scule",
+    "ohash",
+    "ufo",
+    "defu",
+    "node-fetch-native",
+    "unenv",
+    "cookie-es",
+    "core-js",
+    "deepmerge",
+    "destr",
+    "h3",
+    "ohmyfetch",
+    "unstorage",
+    "source-map",
+    "buffer-from"
+  ]
+}
