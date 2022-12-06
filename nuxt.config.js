@@ -2,6 +2,22 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 
 
 export default defineNuxtConfig({
+  nitro: {
+    hooks: {
+      nitro: {
+        // Copy shim to server output dir
+        compiled: (nitro) => {
+          // use env since nitro.options.preset is undefined
+          if (process.env.NITRO_PRESET === "aws-lambda") {
+            copyFileSync(
+              join(__dirname, "lambda-shim.js"),
+              join(nitro.options.output.serverDir, "lambda.js")
+            );
+          }
+        },
+      },
+    },
+  },
   ssr: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
